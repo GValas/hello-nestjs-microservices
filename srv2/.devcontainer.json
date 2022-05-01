@@ -1,0 +1,30 @@
+// https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+{
+  "name": "NestJS Microservices",
+  
+  // name of the service VS Code should connect to once running
+  "service": "srv2", 
+  
+  "dockerComposeFile": "../docker-compose.yml",
+
+  // default path that VS Code should open when connecting to the container
+  "workspaceFolder": "/srv2",
+
+  // prevents from accidentally shutting down containers by closing one window
+  "shutdownAction": "none",
+  
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-azuretools.vscode-docker",
+    "eg2.vscode-npm-script",
+    "msjsdiag.debugger-for-chrome",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+		"mongodb.mongodb-vscode" 
+  ], 
+
+  // "forwardPorts": [3000],
+
+  "postCreateCommand": "npm install",
+}
