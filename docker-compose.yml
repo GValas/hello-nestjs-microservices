@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  srv1:
+    build: 
+      context: ./srv1
+      dockerfile: Dockerfile
+    volumes:
+      - ./srv1:/srv1:cached
+    command: sleep infinity
+    ports:
+      - '3001:3000'
+
+  srv2:
+    build: 
+      context: ./srv2
+      dockerfile: Dockerfile
+    volumes:
+      - ./srv2:/srv2:cached
+    command: sleep infinity
+    ports:
+      - '3002:3000'
+
+  db1:
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db1/data:/data/db
+
+  db2:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ./db2/data:/var/lib/postgresql/data

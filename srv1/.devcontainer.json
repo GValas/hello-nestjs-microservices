@@ -5,11 +5,13 @@
   // name of the service VS Code should connect to once running
   "service": "srv1", 
   
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "../docker-compose.yml",
 
   // default path that VS Code should open when connecting to the container
   "workspaceFolder": "/srv1",
 
+  // prevents from accidentally shutting down containers by closing one window
+  "shutdownAction": "none",
   
   "extensions": [
     "esbenp.prettier-vscode",
@@ -23,7 +25,7 @@
   ], 
 
 
-  "forwardPorts": [3000, 27017, 5432],
+  // "forwardPorts": [3000, 27017, 5432],
 
   
   "postCreateCommand": "npm install",
